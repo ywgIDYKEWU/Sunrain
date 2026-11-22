@@ -1,46 +1,714 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#e9e8e2">
-<title>太阳雨 · A Quiet Archive</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&display=swap');
-:root{--paper:#e9e8e2;--ink:#292d30;--muted:#747a7c;--blue:#788a94;--line:rgba(42,48,51,.2);--warm:#b69b7d;--serif:'Noto Serif SC','Songti SC','STSong',serif;--mono:'DM Mono','SFMono-Regular',monospace}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-weight:400;overflow-x:hidden}body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E")}
-a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}.mono{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.small{font-size:12px;color:var(--muted)}.wrap{width:min(1240px,calc(100% - 64px));margin:auto}.topbar{height:66px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:4}.brand{font-size:15px;letter-spacing:.08em}.brand span{font-family:var(--mono);font-size:9px;color:var(--muted);margin-left:10px}.nav{display:flex;gap:28px;font-family:var(--mono);font-size:10px;letter-spacing:.12em}.nav a{opacity:.65;transition:opacity .3s}.nav a:hover,.nav a.active{opacity:1}.hero{min-height:calc(100svh - 66px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;position:relative;padding:54px 0 80px}.hero-copy{position:relative;z-index:2;padding:4vw 0}.eyebrow{color:var(--muted);margin-bottom:34px}.hero h1{font-size:clamp(52px,9vw,124px);font-weight:400;line-height:1.06;letter-spacing:-.055em;margin:0 0 22px}.hero h1 span{display:block;font-size:.37em;letter-spacing:.18em;font-weight:400;margin-top:22px;color:#606b70}.hero-desc{max-width:350px;line-height:2.1;font-size:14px;color:#61696c;margin-top:40px}.enter{margin-top:50px;display:inline-flex;align-items:center;gap:18px;font-size:12px;letter-spacing:.08em}.enter .arrow{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:transform .3s,background .3s}.enter:hover .arrow{transform:translateX(5px);background:#d9d9d2}.hero-art{height:min(640px,72vh);position:relative;display:flex;align-items:center;justify-content:center}.hero-art svg{width:100%;height:100%;overflow:visible}.art-caption{position:absolute;bottom:2%;right:4%;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);writing-mode:vertical-rl}.sun{width:clamp(100px,17vw,210px);height:clamp(100px,17vw,210px);border-radius:50%;background:radial-gradient(circle at 40% 40%,#d8d6c9 0,#c5c5bc 50%,#b5b8b5 100%);position:absolute;top:14%;right:14%;opacity:.65;filter:blur(.3px)}.hero-art svg .branch{stroke:#59676c;stroke-width:1.2;fill:none;stroke-linecap:round}.hero-art svg .leaf{stroke:#7f8c8c;stroke-width:.7;fill:#b8c0bc;fill-opacity:.35}.hero-art svg .bird{stroke:#4e5c61;stroke-width:1.2;fill:none;stroke-linecap:round}.floating{animation:drift 8s ease-in-out infinite}@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.section{padding:100px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:55px}.section-head h2{font-size:clamp(26px,4vw,48px);font-weight:400;margin:12px 0 0;letter-spacing:-.03em}.section-head .note{max-width:240px;text-align:right;line-height:1.9}.intro-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:8vw;align-items:start}.intro-mark{font-size:clamp(46px,8vw,100px);font-weight:400;line-height:1;color:#849198;opacity:.7}.intro-text{font-size:16px;line-height:2.2;max-width:640px}.intro-text p{margin:0 0 18px}.quote-preview{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}.preview{padding:40px 7% 48px 0;border-bottom:1px solid var(--line);min-height:260px;position:relative}.preview:nth-child(2n){padding-left:7%;border-left:1px solid var(--line)}.preview .qnum{color:var(--muted);margin-bottom:26px}.preview blockquote{font-size:clamp(19px,2.2vw,27px);line-height:1.85;margin:0;max-width:440px}.preview .qmeta{margin-top:28px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}.preview .open-note{margin-top:20px;font-size:11px;letter-spacing:.08em;color:#59696f;display:inline-block;border-bottom:1px solid #9aa5a6;padding-bottom:4px}.archive{padding-top:60px}.archive-tools{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:36px}.search{width:min(340px,100%);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:12px 0}.search input{border:0;background:transparent;outline:none;width:100%;font:12px var(--mono);color:var(--ink)}.search input::placeholder{color:#8b9090}.filters{display:flex;gap:10px;flex-wrap:wrap}.filter{font-family:var(--mono);font-size:9px;letter-spacing:.1em;padding:8px 12px;border:1px solid transparent;color:#737a7b;transition:.25s}.filter:hover,.filter.selected{border-color:var(--line);color:var(--ink)}.archive-list{border-top:1px solid var(--line)}.archive-item{display:grid;grid-template-columns:100px 1fr 160px;gap:20px;padding:36px 0;border-bottom:1px solid var(--line);align-items:start}.archive-item .num{color:var(--muted);padding-top:5px}.archive-item blockquote{margin:0;font-size:clamp(18px,2.4vw,29px);line-height:1.9}.archive-item .details{font-size:11px;line-height:1.9;color:var(--muted);text-align:right}.archive-item .details span{display:block}.archive-item .tag{display:inline-block;margin-top:15px;color:#5e6b70;border-bottom:1px solid #9ca8a6;padding-bottom:2px}.reflection{margin-top:18px;padding:18px 0 0;border-top:1px dashed var(--line);font-size:13px;line-height:2;color:#60696c;display:none;max-width:700px}.archive-item.expanded .reflection{display:block}.toggle{font-size:10px;color:#737a7b;letter-spacing:.1em;margin-top:18px}.empty{padding:40px 0;color:var(--muted);font-size:13px;display:none}.characters{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}.character{padding:42px 7% 46px 0;border-bottom:1px solid var(--line);min-height:330px;position:relative}.character:nth-child(2){border-left:1px solid var(--line);padding-left:7%}.character .char-name{font-size:32px;font-weight:400;letter-spacing:.08em}.character .char-en{color:var(--muted);margin:12px 0 32px}.character p{font-size:14px;line-height:2.2;max-width:430px;color:#626a6c}.char-art{position:absolute;right:6%;bottom:8%;width:130px;opacity:.5}.character:nth-child(2) .char-art{right:4%}.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:9vw}.about h2{font-size:clamp(32px,5vw,64px);font-weight:400;line-height:1.3;margin:0}.about-text{font-size:14px;line-height:2.2;max-width:640px}.about-text p{margin:0 0 20px}.footer{padding:35px 0 45px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted)}.footer .signature{font-family:var(--mono);font-size:10px;letter-spacing:.12em}.fade{opacity:0;transform:translateY(16px);transition:opacity .8s,transform .8s}.fade.visible{opacity:1;transform:none}.rainline{position:absolute;left:0;right:0;top:0;height:100%;pointer-events:none;opacity:.14;overflow:hidden}.rainline i{position:absolute;width:1px;height:90px;background:#75838a;top:-110px;animation:rain 9s linear infinite}.rainline i:nth-child(1){left:12%;animation-delay:1s}.rainline i:nth-child(2){left:35%;animation-delay:4s}.rainline i:nth-child(3){left:61%;animation-delay:2s}.rainline i:nth-child(4){left:87%;animation-delay:6s}@keyframes rain{to{transform:translateY(110vh)}}
-@media(max-width:760px){.wrap{width:calc(100% - 38px)}.topbar{height:58px}.brand span{display:none}.nav{gap:16px;font-size:9px}.hero{min-height:auto;grid-template-columns:1fr;padding:65px 0 36px}.hero-copy{padding:0}.hero h1{font-size:clamp(60px,18vw,100px)}.hero-desc{margin-top:24px;font-size:13px}.enter{margin-top:28px}.hero-art{height:390px;margin-top:8px}.art-caption{right:0}.section{padding:70px 0}.section-head{margin-bottom:34px;align-items:start;gap:18px}.section-head .note{max-width:150px;font-size:11px}.intro-grid{grid-template-columns:1fr;gap:28px}.intro-mark{font-size:50px}.intro-text{font-size:14px}.quote-preview{grid-template-columns:1fr}.preview{padding:28px 0 34px;min-height:unset}.preview:nth-child(2n){padding-left:0;border-left:0}.preview blockquote{font-size:20px}.archive-tools{align-items:flex-start;flex-direction:column}.filters{gap:4px}.filter{padding:7px 9px}.archive-item{grid-template-columns:42px 1fr;gap:12px;padding:26px 0}.archive-item .details{grid-column:2;text-align:left;display:flex;gap:12px;flex-wrap:wrap}.archive-item .details span{display:inline}.archive-item blockquote{font-size:19px}.characters{grid-template-columns:1fr}.character{min-height:300px;padding:32px 0}.character:nth-child(2){border-left:0;padding-left:0}.char-art{width:100px;right:2%}.about{grid-template-columns:1fr;gap:30px}.about h2{font-size:40px}.footer{font-size:10px;gap:12px}.sun{top:10%;right:12%}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.fade{opacity:1;transform:none}}
+t{
+  --paper:#f4efe6;
+  --paper-warm:#faf4e6;
+  --paper-deep:#e8e1d3;
+  --ink:#3a3530;
+  --ink-soft:#6b6355;
+  --ink-mute:#9a917f;
+  --rain:#6e8296;
+  --olive:#8a9070;
+  --gold:#c9a96a;
+  --serif:'Iowan Old Style','Palatino Linotype','Songti SC','Noto Serif SC',serif;
+  --sans:-apple-system,'PingFang SC','Helvetica Neue','Noto Sans SC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background 1.6s ease;
+}
+body.warm{background:var(--paper-warm)}
+body.no-scroll{overflow:hidden}
+
+/* ---------- 纸张颗粒 ---------- */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.12;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ---------- 页眉 ---------- */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:28px 36px;pointer-events:none;
+}
+.site-header > *{pointer-events:auto}
+.wordmark{
+  font-family:var(--serif);font-size:12px;letter-spacing:.35em;
+  color:var(--ink-soft);text-transform:uppercase;
+}
+.site-nav{display:flex;gap:28px}
+.site-nav a{
+  font-size:11px;letter-spacing:.18em;color:var(--ink-mute);
+  text-decoration:none;text-transform:uppercase;
+  transition:color .3s;cursor:pointer;
+}
+.site-nav a:hover{color:var(--ink)}
+
+/* ---------- 场景 ---------- */
+.scene{position:relative;width:100%;height:100vh;overflow:hidden}
+
+/* ---------- 开场 ---------- */
+.rain-canvas{position:absolute;inset:0;pointer-events:none;z-index:1}
+.edge-drawing{position:absolute;pointer-events:none;color:var(--olive)}
+.edge-drawing.left{left:0;bottom:0;width:clamp(120px,15vw,220px);z-index:2}
+.edge-drawing.right{right:0;top:0;width:clamp(100px,12vw,180px);z-index:2}
+
+.bird{
+  position:absolute;top:0;left:0;width:54px;height:27px;
+  color:var(--ink-soft);pointer-events:none;opacity:0;z-index:4;
+  transition:opacity .4s;will-change:transform;
+}
+.bird.visible{opacity:1}
+.bird .wing-l,.bird .wing-r{
+  transform-box:fill-box;
+  animation:flap .55s ease-in-out infinite alternate;
+}
+.bird .wing-l{transform-origin:100% 100%}
+.bird .wing-r{transform-origin:0 100%}
+@keyframes flap{
+  from{transform:rotate(-14deg)}
+  to{transform:rotate(6deg)}
+}
+
+.envelope-wrap{
+  position:absolute;left:58%;top:50%;z-index:5;
+  width:clamp(180px,22vw,280px);
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+  outline:none;
+}
+.envelope{display:block;width:100%;height:auto;color:var(--ink-soft);overflow:visible}
+.envelope-wrap:hover .envelope{transform:translateY(-3px)}
+.envelope{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+
+.envelope .flap{
+  transform-box:fill-box;
+  transform-origin:50% 0%;
+  transition:transform .9s cubic-bezier(.4,0,.2,1),opacity .6s ease .4s;
+}
+.envelope-wrap.opening .flap{
+  transform:rotateX(-170deg);
+  opacity:0;
+}
+.envelope .sheet{
+  transform-box:fill-box;
+  transform-origin:50% 100%;
+  transition:transform 1.1s cubic-bezier(.2,.8,.2,1) .2s,opacity .5s;
+  opacity:0;
+}
+.envelope-wrap.opening .sheet{
+  transform:translateY(-42%);
+  opacity:1;
+}
+
+.hint{
+  position:absolute;left:50%;bottom:8%;transform:translateX(-50%);
+  font-family:var(--serif);font-style:italic;font-size:13px;
+  letter-spacing:.12em;color:var(--ink-mute);
+  z-index:6;white-space:nowrap;
+  animation:breathe 4s ease-in-out infinite;
+}
+@keyframes breathe{
+  0%,100%{opacity:.45}
+  50%{opacity:.9}
+}/* ---------- 信件浮层 ---------- */
+.letter-overlay{
+  position:fixed;inset:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;
+  transition:opacity .9s ease;
+}
+.letter-overlay.open{pointer-events:auto;opacity:1}
+.overlay-backdrop{
+  position:absolute;inset:0;
+  background:rgba(246,240,227,.9);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+.overlay-sun{
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 72% 22%,rgba(212,184,120,.4),transparent 55%);
+  opacity:0;transition:opacity 2.4s ease;
+}
+.letter-overlay.open .overlay-sun{opacity:1}
+.letter-stage{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:36px;
+  transform:translateY(24px);opacity:0;
+  transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s ease;
+  padding:80px 24px;
+  max-height:100vh;
+  overflow-y:auto;
+  width:100%;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(150,140,120,.4) transparent;
+}
+.letter-stage::-webkit-scrollbar{width:6px}
+.letter-stage::-webkit-scrollbar-thumb{background:rgba(150,140,120,.35);border-radius:3px}
+.letter-overlay.open .letter-stage{
+  transform:translateY(0);opacity:1;transition-delay:.35s;
+}
+.letter-paper{
+  font-family:var(--serif);font-size:clamp(16px,1.6vw,18px);
+  line-height:2;color:var(--ink);max-width:560px;width:100%;
+  white-space:pre-line;outline:none;
+  caret-color:var(--gold);
+  padding:8px 4px;
+}
+.letter-paper:focus{background:rgba(255,255,255,.25)}
+.letter-actions{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+}
+.letter-actions button{
+  background:none;border:none;font-family:var(--serif);
+  font-size:12px;letter-spacing:.2em;color:var(--ink-mute);
+  cursor:pointer;padding:8px 16px;transition:color .3s;
+}
+.letter-actions button:hover{color:var(--ink)}
+.letter-tip{
+  font-size:11px;letter-spacing:.15em;color:var(--ink-mute);opacity:.7;
+}
+
+/* ---------- 章节 ---------- */
+.chapter{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  padding:0 8vw;min-height:100vh;
+}
+.ch-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:6vw;
+  max-width:1100px;width:100%;align-items:center;
+}
+.ch-meta{
+  grid-column:1/-1;display:flex;gap:16px;align-items:baseline;
+  margin-bottom:32px;opacity:0;transform:translateY(12px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.ch-num{font-family:var(--serif);font-size:13px;color:var(--ink-mute);letter-spacing:.2em}
+.ch-en{font-size:11px;letter-spacing:.28em;color:var(--ink-mute);text-transform:uppercase}
+.ch-visual{display:flex;justify-content:center;align-items:center}
+.ch-visual svg{width:100%;max-width:360px;height:auto;color:var(--ink-soft)}
+.ch-copy h2{
+  font-family:var(--serif);font-size:clamp(32px,4vw,52px);
+  font-weight:400;letter-spacing:.06em;margin-bottom:24px;
+  color:var(--ink);opacity:0;transform:translateY(14px);
+  transition:opacity .9s ease .15s,transform .9s ease .15s;
+}
+.ch-copy p{
+  font-size:clamp(14px,1.3vw,16px);line-height:2.2;color:var(--ink-soft);
+  letter-spacing:.04em;opacity:0;transform:translateY(12px);
+  transition:opacity .9s ease .3s,transform .9s ease .3s;
+}
+.chapter.in-view .ch-meta,
+.chapter.in-view .ch-copy h2,
+.chapter.in-view .ch-copy p{opacity:1;transform:translateY(0)}
+
+.draw{
+  stroke-dasharray:500;stroke-dashoffset:500;
+  transition:stroke-dashoffset 2s cubic-bezier(.3,.7,.3,1);
+}
+.chapter.in-view .draw{stroke-dashoffset:0}
+
+/* 第 1 章：两组雨 */
+.rain-a,.rain-b{opacity:0;transition:opacity 1.2s ease .4s}
+.chapter.in-view .rain-a,
+.chapter.in-view .rain-b{opacity:1}
+
+/* 第 2 章：雨伞 */
+.umbrella{stroke:var(--ink-soft);stroke-width:1.2;fill:none}
+.umbrella-handle{stroke:var(--ink-soft);stroke-width:1.2;fill:none}
+.umbrella-rain line{stroke:var(--rain);stroke-width:.9;opacity:.35}
+
+/* 响应式 */
+@media (max-width:768px){
+  .site-header{padding:20px 20px}
+  .site-nav{gap:18px}
+  .envelope-wrap{left:50%;top:46%}
+  .ch-inner{grid-template-columns:1fr;gap:40px;text-align:center}
+  .ch-meta{justify-content:center;margin-bottom:20px}
+  .ch-copy h2{margin-bottom:14px}
+  .chapter{padding:8vh 6vw}
+  .letter-stage{padding:60px 20px}
+}/* 减少动效 */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
-<div class="rainline" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-<header class="topbar wrap"><a class="brand" href="#home">太阳雨 <span>PERSONAL ARCHIVE / 2026</span></a><nav class="nav"><a href="#archive">ARCHIVE</a><a href="#characters">PEOPLE</a><a href="#about">ABOUT</a></nav></header>
-<main>
-<section class="hero wrap" id="home"><div class="hero-copy fade"><div class="eyebrow mono">A QUIET ARCHIVE · No. 01</div><h1>SUNRAIN<span>有些东西，留了下来。</span></h1><p class="hero-desc">Words, fragments, and the quiet warmth between two people.<br>关于一部剧，也关于那些在某个时刻，忽然被理解的心情。</p><a class="enter" href="#archive"><span>进入档案</span><span class="arrow">↘</span></a></div>
-<div class="hero-art floating" aria-label="手绘树枝与远处的鸟的插画"><div class="sun"></div><svg viewBox="0 0 540 620" xmlns="http://www.w3.org/2000/svg"><g class="branch"><path d="M280 610 C260 510 240 420 256 320 C270 220 320 130 390 64"/><path d="M262 390 C210 340 155 282 110 194"/><path d="M251 330 C330 300 385 240 430 174"/><path d="M240 460 C180 420 120 385 68 350"/><path d="M290 270 C265 205 250 150 240 90"/><path d="M342 160 C380 140 410 118 445 90"/><path d="M183 286 C160 255 135 220 120 180"/><path d="M360 235 C410 230 445 220 480 190"/><path d="M205 440 C205 380 190 330 165 300"/><path d="M315 205 C320 160 340 120 360 95"/></g><g class="leaf"><path d="M110 194 Q80 145 43 150 Q68 190 110 194Z"/><path d="M130 220 Q155 175 190 182 Q170 214 130 220Z"/><path d="M240 90 Q210 50 178 58 Q203 86 240 90Z"/><path d="M270 145 Q302 100 340 105 Q312 137 270 145Z"/><path d="M390 64 Q420 28 458 34 Q430 60 390 64Z"/><path d="M430 174 Q460 130 495 140 Q468 167 430 174Z"/><path d="M390 242 Q420 275 460 260 Q430 240 390 242Z"/><path d="M68 350 Q32 310 10 326 Q34 348 68 350Z"/><path d="M164 300 Q140 265 110 276 Q135 296 164 300Z"/><path d="M180 420 Q140 385 105 398 Q142 420 180 420Z"/><path d="M360 95 Q385 65 415 70 Q393 91 360 95Z"/></g><g class="bird"><path d="M430 300 Q450 278 470 300 Q492 277 510 294"/><path d="M448 306 Q460 314 476 307"/><path d="M460 295 L468 290"/></g><g opacity=".35" stroke="#75858a" fill="none" stroke-width=".8"><path d="M70 500 C140 490 200 515 260 510"/><path d="M100 520 C180 505 240 530 300 522"/><path d="M380 520 C420 510 460 520 500 505"/></g></svg><div class="art-caption">A SMALL THING THAT CONTINUES TO GROW</div></div></section>
-<section class="section wrap" id="intro"><div class="section-head fade"><div><div class="mono">01 / THE FEELING</div><h2>雨停之后，<br>仍有一些温度。</h2></div><div class="note small">A place to keep what<br>the story left behind.</div></div><div class="intro-grid fade"><div class="intro-mark">静 / 慢 / 留</div><div class="intro-text"><p>有些故事并不会在片尾结束。</p><p>它留下几句话，一些没来得及说出口的情绪，和某个看似普通、却忽然让人心软的瞬间。</p><p>这里收集《太阳雨》的台词、片段，以及我自己的注释。不是为了完整复述故事，只是想把那些值得停留的时刻，认真保存下来。</p></div></div></section>
-<section class="section wrap" id="archive"><div class="section-head fade"><div><div class="mono">02 / QUOTE ARCHIVE</div><h2>留下来的句子</h2></div><div class="note small">Fragments, arranged<br>by the feeling they hold.</div></div>
-<div class="archive-tools fade"><div class="filters" id="filters"><button class="filter selected" data-filter="全部">全部</button><button class="filter" data-filter="成长">成长</button><button class="filter" data-filter="温柔">温柔</button><button class="filter" data-filter="遗憾">遗憾</button><button class="filter" data-filter="关系">关系</button><button class="filter" data-filter="生活">生活</button></div><label class="search"><span class="mono">⌕</span><input id="search" type="search" placeholder="SEARCH / 搜索台词、人物、备注"></label></div>
-<div class="archive-list" id="archiveList"></div><div class="empty" id="empty">没有找到相关内容。试试其他关键词。</div>
+
+<div class="grain"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.1" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wordmark">Sunrain</div>
+  <nav class="site-nav">
+    <a data-nav>Archive</a>
+    <a data-nav>Notes</a>
+    <a data-nav>About</a>
+  </nav>
+</header>
+
+<!-- ========== 开场 ========== -->
+<section class="scene intro" id="intro">
+  <canvas class="rain-canvas" id="rainCanvas"></canvas>
+
+  <svg class="edge-drawing left" viewBox="0 0 200 300" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.4" filter="url(#roughen)">
+      <path d="M40 300 Q 38 240, 30 200"/>
+      <path d="M48 300 Q 50 250, 58 210"/>
+      <path d="M30 240 Q 20 230, 12 218"/>
+      <path d="M50 250 Q 62 240, 70 228"/>
+      <path d="M34 210 Q 26 200, 20 190"/>
+      <path d="M44 220 Q 54 210, 62 204"/>
+    </g>
+  </svg>
+
+  <svg class="edge-drawing right" viewBox="0 0 180 300" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.35" filter="url(#roughen)">
+      <path d="M150 0 Q 140 60, 120 100 Q 110 130, 100 160"/>
+      <path d="M120 100 Q 100 90, 80 88"/>
+      <path d="M135 60 Q 155 50, 170 52"/>
+      <path d="M108 135 Q 90 128, 74 130"/>
+    </g>
+  </svg>
+
+  <svg class="bird" id="bird" viewBox="0 0 60 30" aria-hidden="true">
+    <path class="wing-l" d="M30 15 Q 22 4, 10 10" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+    <path class="wing-r" d="M30 15 Q 38 4, 50 10" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+  </svg>
+
+  <div class="envelope-wrap" id="envelopeWrap" tabindex="0" role="button" aria-label="打开信件">
+    <svg class="envelope" viewBox="0 0 240 160" aria-hidden="true">
+      <g filter="url(#roughen)" fill="none" stroke="currentColor" stroke-linejoin="round">
+        <path d="M22 42 Q 121 38, 219 44 L 217 138 Q 120 142, 24 138 Z" stroke-width="1.2"/>
+        <g class="sheet">
+          <path d="M44 34 L 196 32 L 194 116 L 46 118 Z" fill="#fbf7ee" stroke="#b8b0a0" stroke-width="0.9"/>
+          <line x1="62" y1="60" x2="150" y2="58" stroke="#b8b0a0" stroke-width="0.7"/>
+          <line x1="62" y1="76" x2="170" y2="74" stroke="#b8b0a0" stroke-width="0.7"/>
+          <line x1="62" y1="92" x2="132" y2="90" stroke="#b8b0a0" stroke-width="0.7"/>
+        </g>
+        <path class="flap" d="M22 42 Q 121 108, 219 44" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M24 138 Q 60 100, 120 92 Q 180 100, 217 138" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <rect x="172" y="54" width="30" height="38" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.45" stroke-dasharray="2 2.4"/>
+        <line x1="42" y1="112" x2="100" y2="112" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
+        <line x1="42" y1="122" x2="82" y2="122" stroke="currentColor" stroke-width="0.8" opacity="0.35"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hint">Open the letter.</div>
 </section>
-<section class="section wrap" id="characters"><div class="section-head fade"><div><div class="mono">03 / THE PEOPLE</div><h2>他们各自的世界</h2></div><div class="note small">Two quiet lives, learning<br>to see one another.</div></div><div class="characters fade"><article class="character"><div class="char-name">郑雨</div><div class="char-en mono">A SELF THAT WON'T BOW</div><p>她把自尊当作盔甲，把所有难处都尽量自己消化。不是不需要温柔，只是不习惯接受，更不愿以脆弱换取怜悯。她在一点一点学会：被照顾，并不意味着亏欠。</p><svg class="char-art" viewBox="0 0 140 180"><g fill="none" stroke="#657579" stroke-width=".8"><path d="M70 180 C64 130 76 90 60 50 C48 22 22 12 12 5"/><path d="M67 118 Q42 100 25 75"/><path d="M71 98 Q96 78 110 52"/><path d="M59 50 Q85 40 95 18"/><path d="M25 75 Q6 70 0 50"/><path d="M12 5 Q0 30 20 38 Q22 20 12 5Z"/><path d="M95 18 Q110 5 130 10 Q112 22 95 18Z"/><path d="M110 52 Q130 45 140 58 Q124 64 110 52Z"/><path d="M25 75 Q20 55 4 52 Q10 70 25 75Z"/></g></svg></article><article class="character"><div class="char-name">陈砚周</div><div class="char-en mono">THE WEIGHT HE CARRIES</div><p>他习惯把责任放在自己身上，也习惯沉默。那些无法说清的愧疚与想念，被藏进日常、藏进一次次不动声色的照顾里。他也需要有人看见，那个不只是“谁的弟弟”的他。</p><svg class="char-art" viewBox="0 0 140 180"><g fill="none" stroke="#657579" stroke-width=".8"><path d="M8 150 L35 125 L52 126 L75 102 L92 104 L115 75 L135 76"/><path d="M20 150 L20 165 L45 165 L45 140 L60 140 L60 165 L88 165 L88 125 L108 125 L108 165 L130 165"/><path d="M12 45 Q34 28 56 45 Q34 62 12 45Z"/><path d="M70 25 Q90 10 112 24 Q92 38 70 25Z"/><path d="M5 90 Q28 70 48 90 Q28 108 5 90Z"/><path d="M70 72 Q90 50 116 70 Q95 90 70 72Z"/><path d="M0 175 H140"/></g></svg></article></div></section>
-<section class="section wrap" id="about"><div class="about fade"><h2>关于这个<br>小小的档案。</h2><div class="about-text"><p>它起初只是想留住几句喜欢的台词。后来发现，真正想保存的，是那些台词带来的感受，以及我在看故事时，重新理解的一些东西。</p><p>如果说孤独是一种常态，那么温暖并不一定要将它彻底消除。有时，只是有人愿意停下来，理解你正在经历什么。</p><p>所以这里不追求收录完整。只留那些让我想再读一遍的句子。</p><div class="mono" style="margin-top:36px;color:#7a8587">MADE SLOWLY · KEPT PERSONALLY</div></div></div></section>
-</main><footer class="footer wrap"><span class="signature">SUNRAIN / A QUIET ARCHIVE</span><span>留给那些没有消失的瞬间。</span><span class="mono">2026</span></footer>
+
+<!-- ========== 信件浮层 ========== -->
+<div class="letter-overlay" id="letterOverlay">
+  <div class="overlay-backdrop" id="overlayBackdrop"></div>
+  <div class="overlay-sun"></div>
+  <div class="letter-stage">
+    <article class="letter-paper" id="letterPaper" contenteditable="true" spellcheck="false">今天下雨了。
+
+我写下这些字的时候，窗外的枝条在动。
+雨声很轻，像有人在很远的地方翻书。
+
+你曾经说过，雨总会停的。
+我现在相信了。
+
+—— 某个有阳光的雨天</article>
+    <div class="letter-actions">
+      <button id="closeLetter">收起信件</button>
+      <span class="letter-tip">向下滚动 · 进入四个章节</span>
+    </div>
+  </div>
+</div><!-- ========== 四个章节 ========== -->
+<section class="chapter" data-ch="1">
+  <div class="ch-inner">
+    <div class="ch-meta"><span class="ch-num">01</span><span class="ch-en">Misunderstanding</span></div>
+    <div class="ch-visual">
+      <svg viewBox="0 0 400 320" aria-hidden="true">
+        <g class="rain-a">
+          <line x1="90" y1="40" x2="70" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".55"/>
+          <line x1="110" y1="40" x2="90" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".55"/>
+          <line x1="130" y1="40" x2="110" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".55"/>
+          <line x1="100" y1="60" x2="84" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".35"/>
+        </g>
+        <g class="rain-b" style="transition-delay:.8s">
+          <line x1="270" y1="40" x2="290" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".55"/>
+          <line x1="290" y1="40" x2="310" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".55"/>
+          <line x1="310" y1="40" x2="330" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".55"/>
+          <line x1="300" y1="60" x2="316" y2="140" stroke="var(--rain)" stroke-width="1" opacity=".35"/>
+        </g>
+        <path class="draw" d="M20 250 Q 200 250, 380 250" stroke="var(--ink-mute)" stroke-width="1" fill="none" opacity=".4"/>
+      </svg>
+    </div>
+    <div class="ch-copy">
+      <h2>误会</h2>
+      <p>我们都在下雨，<br>但雨落向不同的方向。</p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" data-ch="2">
+  <div class="ch-inner">
+    <div class="ch-meta"><span class="ch-num">02</span><span class="ch-en">Understanding</span></div>
+    <div class="ch-visual">
+      <svg viewBox="0 0 400 320" aria-hidden="true">
+        <g class="umbrella-rain">
+          <line x1="60" y1="20" x2="50" y2="100" stroke="var(--rain)" stroke-width=".9" opacity=".35"/>
+          <line x1="100" y1="20" x2="90" y2="100" stroke="var(--rain)" stroke-width=".9" opacity=".35"/>
+          <line x1="300" y1="20" x2="310" y2="100" stroke="var(--rain)" stroke-width=".9" opacity=".35"/>
+          <line x1="340" y1="20" x2="350" y2="100" stroke="var(--rain)" stroke-width=".9" opacity=".35"/>
+        </g>
+        <path class="draw umbrella" d="M110 140 Q 200 50, 290 140"/>
+        <path class="draw umbrella-handle" d="M200 140 L 200 250 Q 200 262, 188 262"/>
+      </svg>
+    </div>
+    <div class="ch-copy">
+      <h2>理解</h2>
+      <p>你没有问为什么。<br>你只是把伞，往我这边挪了一点。</p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" data-ch="3">
+  <div class="ch-inner">
+    <div class="ch-meta"><span class="ch-num">03</span><span class="ch-en">Confidants</span></div>
+    <div class="ch-visual">
+      <svg viewBox="0 0 400 320" aria-hidden="true">
+        <path class="draw" d="M60 240 Q 180 220, 200 160" stroke="var(--ink-soft)" stroke-width="1.1" fill="none"/>
+        <path class="draw" d="M340 240 Q 220 220, 200 160" stroke="var(--ink-soft)" stroke-width="1.1" fill="none"/>
+        <path class="draw" d="M200 160 Q 200 100, 200 50" stroke="var(--ink)" stroke-width="1.4" fill="none"/>
+        <circle cx="200" cy="160" r="3" fill="var(--gold)" opacity=".85"/>
+      </svg>
+    </div>
+    <div class="ch-copy">
+      <h2>知己</h2>
+      <p>后来我们发现，<br>原来一直在走同一条路。</p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" data-ch="4">
+  <div class="ch-inner">
+    <div class="ch-meta"><span class="ch-num">04</span><span class="ch-en">Love</span></div>
+    <div class="ch-visual">
+      <svg class="fireworks" id="fireworks" viewBox="0 0 400 320" aria-hidden="true">
+        <path class="draw" d="M20 280 Q 200 280, 380 280" stroke="var(--ink-mute)" stroke-width="1" fill="none" opacity=".35"/>
+      </svg>
+    </div>
+    <div class="ch-copy">
+      <h2>爱人</h2>
+      <p>雨还在下。<br>但光照了进来。</p>
+    </div>
+  </div>
+</section>
+
 <script>
-// 示例占位内容：请替换为剧中准确台词。这里没有把示例句伪装成原剧台词。
-const quotes=[
- {id:'01',text:'有些人不是不想靠近，只是太习惯一个人撑着。',character:'郑雨 · 观后感占位',episode:'—',tags:['成长','温柔'],note:'关于她的自尊与独立：不愿接受帮助并非冷漠，而是很长时间以来，她只能靠自己。此处为个人感想示例，并非剧中原句。'},
- {id:'02',text:'一个人背着太多东西的时候，连善意也会觉得沉。',character:'人物理解 · 占位',episode:'—',tags:['生活','关系'],note:'善意有时会让人意识到自己的处境。真正的理解，不是替她做决定，而是让她有选择接受的余地。此处为个人感想示例，并非剧中原句。'},
- {id:'03',text:'后来才发现，被看见本身，就是一种很安静的救赎。',character:'观后感 · 占位',episode:'—',tags:['温柔','成长'],note:'她开始看见他不只是哥哥的影子；他也开始知道，不必永远把所有事都一个人扛着。此处为个人感想示例，并非剧中原句。'},
- {id:'04',text:'我们没有让过去消失，只是终于能带着它继续往前。',character:'观后感 · 占位',episode:'—',tags:['遗憾','成长'],note:'成长不是忘记，也不是突然变得无坚不摧。是伤口还在，但未来不再只剩下伤口。此处为个人感想示例，并非剧中原句。'},
- {id:'05',text:'日子很难，但总有人用很小的方式，让它没那么难。',character:'生活片段 · 占位',episode:'—',tags:['生活','温柔'],note:'便利店、医院、同学和一些普通人。故事的暖意并不只来自主角，而来自每个人愿意伸出的手。此处为个人感想示例，并非剧中原句。'},
- {id:'06',text:'爱不是替一个人解释所有痛苦，而是愿意认真看见他。',character:'关系理解 · 占位',episode:'—',tags:['关系','温柔'],note:'她看见了他的愧疚，也看见了那个独立于哥哥之外的陈砚周。理解不是替他开脱，而是终于看见完整的人。此处为个人感想示例，并非剧中原句。'}
-];
-const list=document.getElementById('archiveList'),search=document.getElementById('search'),empty=document.getElementById('empty');let active='全部';
-function render(){const q=search.value.trim().toLowerCase();const filtered=quotes.filter(x=>(active==='全部'||x.tags.includes(active))&&(!q||[x.text,x.character,x.episode,x.tags.join(' '),x.note].join(' ').toLowerCase().includes(q)));list.innerHTML=filtered.map(x=>`<article class="archive-item" data-id="${x.id}"><div class="num mono">FRAG. ${x.id}</div><div><blockquote>${x.text}</blockquote><div class="details" style="text-align:left;margin-top:14px"><span>${x.character}</span><span>${x.episode}</span><span class="tag">${x.tags.join(' / ')}</span></div><button class="toggle" aria-expanded="false">＋ 展开个人注释</button><div class="reflection">${x.note}</div></div><div class="details"><span>COLLECTED FRAGMENT</span><span>— ${x.id}</span></div></article>`).join('');empty.style.display=filtered.length?'none':'block';list.querySelectorAll('.toggle').forEach(b=>b.addEventListener('click',()=>{const a=b.closest('.archive-item');a.classList.toggle('expanded');const on=a.classList.contains('expanded');b.textContent=on?'－ 收起个人注释':'＋ 展开个人注释';b.setAttribute('aria-expanded',on)}));}
-render();search.addEventListener('input',render);document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');active=b.dataset.filter;render()}));
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
-</script>
-</body></html>
+/* ==========================================================
+   0. 导航占位（还没有子页面，避免跳到顶部）
+   ========================================================== */
+document.querySelectorAll('.site-nav a[data-nav]').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); });
+});/* ==========================================================
+   1. 雨：常驻、细密、低透明度，可受风影响
+   ========================================================== */
+(function(){
+  const canvas = document.getElementById('rainCanvas');
+  const ctx = canvas.getContext('2d');
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+  let W = 0, H = 0;
+  const drops = [];
+  const COUNT = 170;
+
+  let windPhase = 0;
+  let gust = 0, gustTarget = 0, gustTimer = 0;
+  let warmth = 0, warmthTarget = 0;
+  let mouseX = -9999;
+
+  function resize(){
+    W = canvas.width = window.innerWidth * DPR;
+    H = canvas.height = window.innerHeight * DPR;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  for(let i=0;i<COUNT;i++){
+    drops.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      len: (12 + Math.random()*20) * DPR,
+      speed: (1.1 + Math.random()*2.0) * DPR,
+      alpha: 0.05 + Math.random()*0.09
+    });
+  }
+
+  window.addEventListener('mousemove', e=>{ mouseX = e.clientX * DPR; });
+  window.addEventListener('mouseleave', ()=>{ mouseX = -9999; });
+
+  let lastT = performance.now();
+  function frame(now){
+    const dt = Math.min(50, now - lastT) / 16;
+    lastT = now;
+
+    windPhase += 0.0012 * dt;
+    if(gustTimer <= 0){
+      gustTimer = 140 + Math.random()*220;
+      gustTarget = (Math.random()-0.5) * 0.55;
+    }
+    gustTimer -= dt;
+    gust += (gustTarget - gust) * 0.006 * dt;
+
+    // 鼠标在信封附近时，风更大
+    let mouseWind = 0;
+    if(mouseX > -9000){
+      const env = document.getElementById('envelopeWrap');
+      if(env){
+        const r = env.getBoundingClientRect();
+        const cx = (r.left + r.width/2) * DPR;
+        const d = Math.abs(mouseX - cx);
+        mouseWind = Math.max(0, 1 - d/(400*DPR)) * 0.35;
+      }
+    }
+
+    const wind = Math.sin(windPhase) * 0.14 + gust + mouseWind;
+
+    warmth += (warmthTarget - warmth) * 0.02 * dt;
+
+    ctx.clearRect(0, 0, W, H);
+
+    const r = Math.round(110 + warmth * 45);
+    const g = Math.round(130 + warmth * 32);
+    const b = Math.round(150 + warmth * 5);
+    const alphaMul = 1 - warmth * 0.35;
+
+    for(const d of drops){
+      d.y += d.speed * dt;
+      d.x += d.speed * Math.sin(wind) * dt;
+      if(d.y > H + 40){ d.y = -40; d.x = Math.random()*W; }
+      if(d.x > W + 40) d.x = -40;
+      if(d.x < -40) d.x = W + 40;
+
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - Math.sin(wind)*d.len, d.y - d.len);
+      ctx.strokeStyle = `rgba(${r},${g},${b},${d.alpha * alphaMul})`;
+      ctx.lineWidth = DPR * 0.7;
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  window.__sunrain = { setWarmth: v => { warmthTarget = v; } };
+})();
+
+/* ==========================================================
+   2. 小鸟飞行（三次贝塞尔）
+   ========================================================== */
+(function(){
+  const bird = document.getElementById('bird');
+  if(!bird) return;
+
+  function bezier(t, p0, p1, p2, p3){
+    const u = 1 - t;
+    return {
+      x: u*u*u*p0.x + 3*u*u*t*p1.x + 3*u*t*t*p2.x + t*t*t*p3.x,
+      y: u*u*u*p0.y + 3*u*u*t*p1.y + 3*u*t*t*p2.y + t*t*t*p3.y
+    };
+  }
+
+  function flyTo(target, duration, onDone){
+    const start = { x: -80, y: window.innerHeight * 0.3 };
+    const c1 = { x: start.x + 220, y: start.y - 140 };
+    const c2 = { x: target.x - 200, y: target.y - 90 };
+    const t0 = performance.now();
+    bird.classList.add('visible');
+
+    function step(now){
+      const t = Math.min(1, (now - t0) / duration);
+      const e = 1 - Math.pow(1 - t, 3);
+      const p = bezier(e, start, c1, c2, target);
+      bird.style.transform = `translate(${p.x}px, ${p.y}px)`;
+      if(t < 1) requestAnimationFrame(step);
+      else if(onDone) onDone();
+    }
+    requestAnimationFrame(step);
+  }
+
+  let idleTimer = null;
+  function scheduleIdleFly(){
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      const w = window.innerWidth, h = window.innerHeight;
+      const fromLeft = Math.random() > 0.5;
+      const start = { x: fromLeft ? -80 : w + 80, y: h * (0.2 + Math.random()*0.4) };
+      const end = { x: fromLeft ? w + 80 : -80, y: h * (0.2 + Math.random()*0.4) };
+      const c1 = { x: fromLeft ? w*0.3 : w*0.7, y: start.y - 120 };
+      const c2 = { x: fromLeft ? w*0.7 : w*0.3, y: end.y - 80 };
+      const t0 = performance.now();
+      const dur = 3200 + Math.random()*1200;
+      bird.classList.add('visible');
+      function step(now){
+        const t = Math.min(1, (now - t0) / dur);
+        const e = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2;
+        const p = bezier(e, start, c1, c2, end);
+        bird.style.transform = `translate(${p.x}px, ${p.y}px)`;
+        if(t < 1) requestAnimationFrame(step);
+        else { bird.classList.remove('visible'); scheduleIdleFly(); }
+      }
+      requestAnimationFrame(step);
+    }, 14000 + Math.random()*12000);
+  }
+  scheduleIdleFly();  window.__bird = { flyTo };
+})();
+
+/* ==========================================================
+   3. 信封视差
+   ========================================================== */
+(function(){
+  const wrap = document.getElementById('envelopeWrap');
+  if(!wrap) return;
+  let tx = 0, ty = 0, cx = 0, cy = 0;
+
+  document.addEventListener('mousemove', e => {
+    const nx = (e.clientX / window.innerWidth - 0.5) * 2;
+    const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+    tx = nx * 6;
+    ty = ny * 4;
+  });
+
+  function loop(){
+    cx += (tx - cx) * 0.08;
+    cy += (ty - cy) * 0.08;
+    wrap.style.transform = `translate(calc(-50% + ${cx}px), calc(-50% + ${cy}px))`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ==========================================================
+   4. 信件开合
+   ========================================================== */
+(function(){
+  const wrap = document.getElementById('envelopeWrap');
+  const overlay = document.getElementById('letterOverlay');
+  const backdrop = document.getElementById('overlayBackdrop');
+  const closeBtn = document.getElementById('closeLetter');
+  const paper = document.getElementById('letterPaper');
+
+  let opened = false;
+
+  try{
+    const saved = localStorage.getItem('sunrain-letter');
+    if(saved) paper.textContent = saved;
+  }catch(e){}
+  paper.addEventListener('input', () => {
+    try{ localStorage.setItem('sunrain-letter', paper.textContent); }catch(e){}
+  });
+
+  function openLetter(){
+    if(opened) return;
+    opened = true;
+
+    const r = wrap.getBoundingClientRect();
+    const target = { x: r.left + r.width * 0.5, y: r.top + r.height * 0.5 };
+
+    if(window.__bird){
+      window.__bird.flyTo(target, 1400, triggerOpen);
+    } else {
+      triggerOpen();
+    }
+  }
+
+  function triggerOpen(){
+    wrap.classList.add('opening');
+    setTimeout(() => {
+      overlay.classList.add('open');
+      document.body.classList.add('no-scroll');
+      document.body.classList.add('warm');
+      if(window.__sunrain) window.__sunrain.setWarmth(1);
+    }, 700);
+  }
+
+  function closeLetter(){
+    overlay.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+
+  wrap.addEventListener('click', openLetter);
+  wrap.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLetter(); }
+  });
+
+  closeBtn.addEventListener('click', closeLetter);
+  backdrop.addEventListener('click', closeLetter);
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && overlay.classList.contains('open')) closeLetter();
+  });
+})();
+
+/* ==========================================================
+   5. 章节进入视口 + 烟花
+   ========================================================== */
+(function(){
+  const chapters = document.querySelectorAll('.chapter');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, { threshold: 0.25 });
+  chapters.forEach(c => io.observe(c));
+
+  const ch4 = document.querySelector('[data-ch="4"]');
+  if(ch4){
+    const fireOnce = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          spawnFirework(140, 110, 46, 12);
+          setTimeout(()=> spawnFirework(270, 80, 36, 10), 500);
+          setTimeout(()=> spawnFirework(210, 150, 28, 8), 1000);
+          fireOnce.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    fireOnce.observe(ch4);
+  }
+
+  function spawnFirework(cx, cy, radius, count){
+    const svg = document.getElementById('fireworks');
+    if(!svg) return;
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    for(let i=0;i<count;i++){
+      const angle = (Math.PI*2*i)/count + (Math.random()-0.5)*0.4;
+      const len = radius * (0.55 + Math.random()*0.6);
+      const x2 = cx + Math.cos(angle)*len;
+      const y2 = cy + Math.sin(angle)*len;
+      const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1', cx);
+      line.setAttribute('y1', cy);
+      line.setAttribute('x2', x2);
+      line.setAttribute('y2', y2);
+      const hue = 38 + Math.random()*22;
+      line.setAttribute('stroke', `hsl(${hue}, ${32 + Math.random()*18}%, ${58 + Math.random()*10}%)`);
+      line.setAttribute('stroke-width', '1');
+      line.style.strokeDasharray = len;
+      line.style.strokeDashoffset = len;
+      line.style.transition = `stroke-dashoffset ${0.7 + Math.random()*0.5}s ease ${Math.random()*0.25}s, opacity 1.2s ease ${0.8 + Math.random()*0.4}s`;
+      g.appendChild(line);
+      requestAnimationFrame(() => { line.style.strokeDashoffset = 0; });
+      setTimeout(()
